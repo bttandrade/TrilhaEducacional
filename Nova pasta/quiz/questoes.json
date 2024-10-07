@@ -1,0 +1,9 @@
+{
+    "questoes": [
+        {
+            "pergunta": "Qual é a capital do Brasil?",
+            "opcoes": ["São Paulo", "Rio de Janeiro", "Brasília", "Salvador"],
+            "resposta": "Brasília"
+        }
+    ]
+}
