@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Candy Crush Style Map</title>
+</head>
+<style>
+    * {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.map-container {
+    width: 300px; /* Width of the map */
+}
+
+.map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.level {
+    background-color: #fff;
+    border: 2px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    transition: background-color 0.3s;
+}
+
+.level:hover {
+    background-color: #ffe6e6; /* Highlight on hover */
+}
+
+.level:before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -10px; /* Adjust for arrow position */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #e5e5e5 transparent;
+    transform: translateX(-50%);
+}
+
+.level:first-child:before {
+    display: none; /* Hide the arrow for the first level */
+}
+
+.level:last-child:before {
+    border-color: transparent transparent transparent transparent; /* Hide arrow for last level */
+}
+
+</style>
+<body>
+    <div class="map-container">
+        <div class="map">
+            <div class="level" id="level1">Level 1</div>
+            <div class="level" id="level2">Level 2</div>
+            <div class="level" id="level3">Level 3</div>
+            <div class="level" id="level4">Level 4</div>
+            <div class="level" id="level5">Level 5</div>
+        </div>
+    </div>
+</body>
+</html>

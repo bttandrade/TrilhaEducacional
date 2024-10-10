@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@28,400,0,0" />
+    <link rel="stylesheet" href="../css/selecionar_disciplina.css">
+    <link rel="stylesheet" href="../css/css/all.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+    <title>Allen Vision</title>
+</head>
+<body>
+    <header>
+        <div class="logo-3bar">
+            <i class="fa-light fa-bars" id="menu-toggle"></i>
+            <img src="../imgs/Gemini_Generated_Image_lx7zsjlx7zsjlx7z-removebg-preview (1).png" alt="Logo">
+        </div>
+        <nav class="nav-header">
+            <div id="email-div">
+                <i class="fa-light fa-circle-user"></i>
+                <p>victorrfs@gmail.com</p>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div class="lang-div">
+                <i class="fa-light fa-globe"></i>
+                <i class="fa-solid fa-caret-down"></i>
+            </div>
+            <div class="logout">
+                <i class="fa-regular fa-arrow-right-from-bracket" id="logout"></i>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="nav-bar-left" id="nav-bar-left">
+            <ul class="menu">
+                <li class="option">
+                    <a href="#">
+                        <i class="fa-solid fa-address-card"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+                <li class="option">
+                    <a href="#">
+                        <i class="fa-solid fa-book-open-cover"></i>
+                        <span>Trilhas</span>
+                    </a>
+                </li>
+                <li class="option">
+                    <a href="#">
+                        <i class="fa-solid fa-flag-swallowtail"></i>
+                        <span>Resumos</span>
+                    </a>
+                </li>
+                <li class="option">
+                    <a href="#">
+                        <i class="fa-solid fa-ballot-check"></i>
+                        <span>Questões</span>
+                    </a>
+                </li>
+                <li class="option">
+                    <a href="#">
+                        <i class="fa-sharp fa-solid fa-star-christmas"></i>
+                        <span>Planos</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content" id="content">
+            <section class="category">
+                <h2>ENEM</h2>
+                <div class="grid-container">
+                    <div class="subject">
+                        <img src="../imgs/ciencias_naturais.png" alt="Matéria 1">
+                        <p>Ciências da Natureza</p>
+                    </div>
+                    <div class="subject">
+                        <img src="../imgs/ciencias_humanas.png" alt="Matéria 2">
+                        <p>Ciências Humanas</p>
+                    </div>
+                    <div class="subject">
+                        <img src="../imgs/linguagem_tecnologias.png" alt="Matéria 3">
+                        <p>Linguagens, Códigos e suas Tecnologias</p>
+                    </div>
+                    <div class="subject">
+                        <img src="../imgs/matematicas_tecnologias.png" alt="Matéria 4">
+                        <p>Matemática e suas tecnologias</p>
+                    </div>
+                    <div class="subject">
+                        <img src="../imgs/redacao.png" alt="Matéria 4">
+                        <p>Redação</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="category">
+                <h2>Ensino Médio</h2>
+                <div class="grid-container">
+                    <div class="subject">
+                        <img src="../imgs/portugues.png" alt="Língua Portuguesa">
+                        <p>Língua Portuguesa</p>
+                    </div>
+                    <div class="subject">
+                        <img src="../imgs/matematica.png" alt="Matemática">
+                        <p>Matemática</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="História">
+                        <p>História</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Geografia">
+                        <p>Geografia</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Física">
+                        <p>Física</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Química">
+                        <p>Química</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Biologia">
+                        <p>Biologia</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Inglês">
+                        <p>Inglês</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Educação Física">
+                        <p>Educação Física</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Artes">
+                        <p>Artes</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Filosofia">
+                        <p>Filosofia</p>
+                    </div>
+                    <div class="subject">
+                        <img src="https://via.placeholder.com/150" alt="Sociologia">
+                        <p>Sociologia</p>
+                    </div>
+                </div>                
+            </section>
+        </div>
+    </main>
+    
+    <script>
+        // Função para colapsar/expandir a barra lateral
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const navBarLeft = document.getElementById('nav-bar-left');
+            navBarLeft.classList.toggle('collapsed');
+            
+            const content = document.querySelector('.content'); //
+        });
+    </script>
+</body>
+</html>
