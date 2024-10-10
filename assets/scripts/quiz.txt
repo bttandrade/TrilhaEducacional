@@ -1,0 +1,136 @@
+const caminho = document.getElementById('caminho');
+const modal = new bootstrap.Modal(document.getElementById('modal'));
+const modalTexto = document.getElementById('modal-texto');
+
+let nivelAtual = 1;
+let questoes;
+
+// Função para criar a trilha
+async function criarTrilha() {
+    try {
+        const response = await fetch('../jsons/questoes.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        questoes = data.matematica[0];
+
+        let nivelGlobal = 1;
+
+        for (const [assunto, questoesAssunto] of Object.entries(questoes)) {
+            // Criar quadrado para o assunto
+            const quadrado = document.createElement('div');
+            quadrado.className = 'quadrado';
+            quadrado.textContent = assunto;
+            quadrado.addEventListener('click', () => abrirModalAssunto(assunto));
+            caminho.appendChild(quadrado);
+
+            // Criar esferas para as questões do assunto
+            questoesAssunto.forEach((questao, index) => {
+                const esfera = document.createElement('div');
+                esfera.className = 'esfera';
+                esfera.textContent = nivelGlobal;
+                esfera.dataset.assunto = assunto;
+                esfera.dataset.indice = index;
+                esfera.addEventListener('click', abrirModal);
+                if (nivelGlobal > 1) {
+                    esfera.classList.add('bloqueada');
+                }
+                caminho.appendChild(esfera);
+                nivelGlobal++;
+            });
+        }
+    } catch (error) {
+        console.error('Erro ao carregar as questões:', error);
+    }
+}
+
+function abrirModalAssunto(assunto) {
+    modalTexto.innerHTML = `
+        <h3>Assunto: ${assunto}</h3>
+        <p>Este é o módulo de ${assunto}. Clique nas esferas para responder às questões.</p>
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+    `;
+    modal.show();
+}
+
+function abrirModal(event) {
+    const assunto = event.target.dataset.assunto;
+    const indice = parseInt(event.target.dataset.indice);
+    const numeroEsfera = parseInt(event.target.textContent);
+
+    if (numeroEsfera > nivelAtual) {
+        alert('Esta esfera ainda está bloqueada. Complete os níveis anteriores primeiro.');
+        return;
+    }
+
+    const questao = questoes[assunto][indice];
+    
+    modalTexto.innerHTML = `
+        <h3>Questão ${numeroEsfera}: ${questao.pergunta}</h3>
+        <form id="quizForm">
+            ${questao.opcoes.map((opcao, index) => `
+                <div>
+                    <input type="radio" id="opcao${index}" name="resposta" value="${opcao}">
+                    <label for="opcao${index}">${opcao}</label>
+                </div>
+            `).join('')}
+            <button type="submit" class="btn btn-primary" id="confirmarResposta">Confirmar Resposta</button>
+        </form>
+    `;
+    modal.show();
+
+    document.getElementById('quizForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        verificarResposta(questao.resposta, numeroEsfera);
+    });
+}
+
+// Scroll to the bottom of the page
+window.onload = criarTrilha;
+
+function verificarResposta(respostaCorreta, nivel) {
+    const respostaSelecionada = document.querySelector('input[name="resposta"]:checked');
+    if (!respostaSelecionada) {
+        alert('Por favor, selecione uma resposta.');
+        return;
+    }
+
+    const opcoes = document.querySelectorAll('input[name="resposta"]');
+    opcoes.forEach(opcao => {
+        opcao.disabled = true;
+        const label = opcao.nextElementSibling;
+        if (opcao.value === respostaCorreta) {
+            label.style.color = 'green';
+        } else if (opcao === respostaSelecionada) {
+            label.style.color = 'red';
+        }
+    });
+
+    const resultado = respostaSelecionada.value === respostaCorreta ? 'Resposta correta!' : 'Resposta incorreta.';
+    modalTexto.innerHTML += `<p>${resultado}</p>`;
+
+    document.getElementById('confirmarResposta').disabled = true;
+
+    if (respostaSelecionada.value === respostaCorreta) {
+        desbloquearProximoNivel(nivel);
+        modalTexto.innerHTML += `<p>Parabéns! Você desbloqueou o nível ${nivel + 1}.</p>`;
+    }
+
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 3000);
+}
+
+function desbloquearProximoNivel(nivel) {
+    if (nivel < 10) {
+        const proximaEsfera = document.querySelector(`.esfera[data-numero="${nivel + 1}"]`);
+        proximaEsfera.classList.remove('bloqueada');
+        nivelAtual = nivel + 1;
+    }
+}
+
+// Adicione esta função para fechar o modal
+function fecharModal() {
+    modal.hide();
+}
