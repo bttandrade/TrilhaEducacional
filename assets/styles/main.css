@@ -37,18 +37,33 @@ header {
 }
 
 .logo-3bar {
-    width: 10%;
+    padding-left: 1.5rem;
+    width: auto;
     height: 100%;
     display: flex;
     justify-content: space-around;
     font-size: 1.5rem;
     color: white;
-    align-items: center;    
+    align-items: center;
+    gap: 0.5rem;  
     background-color: var(--orange);
 }
+#logo{
+    height: 70px;
+    width: 90px;
+}
+
 #email-div{
     display: flex;
-    gap: 0.4rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+#email-div i {
+    font-size: 2.5rem;
+}
+#logout {
+    cursor: pointer;
+    font-size: 1.5rem;
 }
 .logo-3bar img {
     width: 40%;
@@ -60,7 +75,7 @@ header {
 }
 
 .nav-header {
-    width: 30%;
+    width: 25%;
     height: 100%;
     display: flex;
     justify-content: space-around;
@@ -85,7 +100,8 @@ main {
     width: 95vw; 
     padding: 20px;
     transition: width 0.3s ease-in-out; /* Adiciona uma transição suave */
-    margin-bottom: 50px;
+    margin-bottom: 4.5rem;
+    margin-left: 2.5rem;
 }
 
 .content.collapsed {
@@ -186,27 +202,23 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(250px, 250px)); /* Mantém 250px como largura mínima */
     gap: 35px;
     margin-bottom: 40px;
-    justify-content: space-around;
 }
 
 .subject {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
-    width: 100%;
-    height: 100%;
+    width: 17em;
+    height: 17em;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     background-color: #fff;
     cursor: pointer;
-}
-
-.subject img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 10px;
-    border-radius: 4px;
 }
 
 .subject:hover {
@@ -217,5 +229,9 @@ main {
     font-size: 1rem;
     color: var(--darkblue);
     font-weight: bold;
+}
+
+.subject i {
+    font-size: 9rem;
 }
 
