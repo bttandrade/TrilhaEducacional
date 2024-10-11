@@ -1,0 +1,61 @@
+{
+  "matematica": [
+    {
+      "tipo": "questao",
+      "titulo": "Fase 1 - Questões",
+      "questoes": [
+        {
+          "pergunta": "Qual é 2 + 2?",
+          "respostas": [
+            "5",
+            "3",
+            "8",
+            "4"
+          ],
+          "respostaCorreta": "4"
+        },
+        {
+          "pergunta": "Qual é a raiz quadrada de 16?",
+          "respostas": [
+            "4",
+            "8",
+            "12",
+            "2"
+          ],
+          "respostaCorreta": "4"
+        }
+      ]
+    },
+    {
+      "tipo": "resumo",
+      "titulo": "Resumo de Adição",
+      "conteudo": "A adição é uma das quatro operações fundamentais da aritmética..."
+    },
+    {
+      "tipo": "questao",
+      "titulo": "Fase 2 - Questões",
+      "questoes": [
+        {
+          "pergunta": "Qual é 5 * 6?",
+          "respostas": [
+            "30",
+            "20",
+            "10",
+            "15"
+          ],
+          "respostaCorreta": "30"
+        },
+        {
+          "pergunta": "Qual é o resultado de 15 - 9?",
+          "respostas": [
+            "6",
+            "7",
+            "5",
+            "8"
+          ]
+          ,"respostaCorreta": "6"
+        }
+      ]
+    }
+  ]
+}

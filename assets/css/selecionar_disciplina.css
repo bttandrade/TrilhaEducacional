@@ -186,6 +186,7 @@ main {
     grid-template-columns: repeat(auto-fill, minmax(250px, 250px)); /* Mantém 250px como largura mínima */
     gap: 35px;
     margin-bottom: 40px;
+    justify-content: space-around;
 }
 
 .subject {
